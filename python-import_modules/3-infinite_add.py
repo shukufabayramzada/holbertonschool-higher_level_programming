@@ -6,7 +6,7 @@ if __name__ == "__main__":
     n = len(sys.argv)
     total_sum = 0
     if n == 1:
-        print("no argument is provided")
+        print(0)
     else:
         for i in range(1, n):
             total_sum += int(sys.argv[i])
