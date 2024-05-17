@@ -4,14 +4,10 @@ import sys
 
 if __name__ == "__main__":
     n = len(sys.argv)
-    s = n - 1
-    if s == 0:
+    total_sum = 0
+    if n == 1:
         print("no argument is provided")
-    elif s == 1:
-        print("{}".format(int(sys.argv[1])))
     else:
-        for i in range(1, s):
-            add = 0
-            x = int(sys.argv[i])
-            add += x
-            print("{}".format(add))
+        for i in range(1, n):
+            total_sum += int(sys.argv[i])
+        print("{}".format(total_sum))
