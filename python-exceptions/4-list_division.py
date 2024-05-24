@@ -5,8 +5,7 @@ def list_division(my_list_1, my_list_2, list_length):
         try:
             num1 = my_list_1[i]
             num2 = my_list_2[i]
-            if isinstance(num1, (int, float)) and 
-            isinstance(num2, (int, float)):
+            if (isinstance(num1, (int, float)) and isinstance(num2, (int, float))):
                 new_list.append(num1 / num2)
             else:
                 print("wrong type")
