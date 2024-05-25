@@ -3,8 +3,8 @@
 
 
 class Square:
-    """An empty class that defines a square"""
+    """An class that defines a square"""
     
     def __init__(self, size):
         """Initialize the Square with a given size."""
-        self.size = size
+        self.__size = size
