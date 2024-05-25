@@ -7,10 +7,9 @@ class Square:
 
     def __init__(self, size):
         """Initialize the Square with a given size."""
-        try:
-            if isinstance(size, int) and size > 0:
-                self.__size = size
-        except ValueError:
-            print("size must be >= 0")
-        except TypeError:
-            print("size must be an integer")
+
+        if not isinstance(size, int):
+            raise TypeError("size must be integer")
+        if size < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = size
