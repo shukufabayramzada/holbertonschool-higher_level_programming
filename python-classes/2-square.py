@@ -5,7 +5,7 @@
 class Square:
     """An class that defines a square"""
 
-    def __init__(self, size):
+    def __init__(self, size=0):
         """Initialize the Square with a given size."""
 
         if not isinstance(size, int):
