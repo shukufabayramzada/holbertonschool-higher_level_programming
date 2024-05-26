@@ -30,7 +30,7 @@ class Square:
 
     def my_print(self):
         """Print square"""
-        if sel.__size == 0:
+        if self.__size == 0:
             print("")
         for _ in range(self.__position[1]):
             print("")
