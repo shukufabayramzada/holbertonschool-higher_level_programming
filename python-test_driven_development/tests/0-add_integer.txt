@@ -50,19 +50,19 @@ Test for validation of second argument:
     >>> add_integer("s", 5)
     Traceback (most recent call last):
         ...
-    TypeError: a must be an integer or float
+    TypeError: a must be an integer
 
 Test for validation of second argument:
      >>> add_integer(6, [])
      Traceback (most recent call last)
           ...
-     TypeError: b must be an integer or float
+     TypeError: b must be an integer
 
 Test for validation of both arguments:
      >>> add_integer("a", "a")
      Traceback (most recent call last)
          ...
-     TypeError: both arguments must an integer or float
+     TypeError: both arguments must an integer
 
 Test for when both arguments are invalid:
      >>> add_integer(None, None)
