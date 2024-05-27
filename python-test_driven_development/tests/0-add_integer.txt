@@ -62,13 +62,13 @@ Test for validation of both arguments:
      >>> add_integer("a", "a")
      Traceback (most recent call last)
          ...
-     TypeError: both arguments must an integer
+     TypeError: b must be an integer
 
 Test for when both arguments are invalid:
      >>> add_integer(None, None)
      Traceback (most recent call last)
          ...
-     TypeError: both arguments must be integer or float
+     TypeError: b must be integer
 
 Test float overflow:
     >>> add_integer(float('inf'), 0)
