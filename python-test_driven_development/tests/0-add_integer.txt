@@ -1,0 +1,90 @@
+The ``add_integer`` module
+=======================
+
+Using ``add_integer``
+---------------------
+
+Importing:
+
+      >>> add_integer = __import__('0-add_integer').add_integer
+
+Test for one int:
+     >>> add_integer(3)
+     101
+
+Test for one int:
+     >>> add_integer(0)
+     98
+
+Test for one float:
+    >>> add_integer(5.0)
+    103
+
+Test for negative float:
+    >>> add_integer(-5.0)
+    93
+
+Test for two integers:
+    >>> add_integer(2, 3)
+    5
+
+Test for negative and positive integers:
+    >>> add_integer(-6, 12)
+    6
+
+Test for integer and float:
+    >>> add_integer(5, 7.9787)
+    12
+
+Test for two floats:
+    >>> add_integer(7.8989, 5.6785)
+    12
+
+Test for infinity:
+    >>> add_integer(float('inf'), float('-inf'))
+    Traceback (most recent call last):
+        ...
+    OverflowError: can't convert float infinity to integer
+
+Test for validation of second argument:
+    >>> add_integer("s", 5)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer or float
+
+Test for validation of second argument:
+     >>> add_integer(6, [])
+     Traceback (most recent call last)
+          ...
+     TypeError: b must be an integer or float
+
+Test for validation of both arguments:
+     >>> add_integer("a", "a")
+     Traceback (most recent call last)
+         ...
+     TypeError: both arguments must an integer or float
+
+Test for when both arguments are invalid:
+     >>> add_integer(None, None)
+     Traceback (most recent call last)
+         ...
+     TypeError: both arguments must be integer or float
+
+Test float overflow:
+    >>> add_integer(float('inf'), 0)
+    Traceback (most recent call last):
+    ...
+    OverflowError: cannot convert float infinity to integer
+
+Add nan:
+
+    >>> add_integer(0, float('nan'))
+    Traceback (most recent call last):
+    ...
+    ValueError: cannot convert float NaN to integer
+     
+
+
+
+
+
