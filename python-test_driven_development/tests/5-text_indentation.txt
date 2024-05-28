@@ -1,0 +1,26 @@
+The ``4. Text indentation`` module
+==================================
+
+Importing:
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test cases:
+
+>>> text_indentation("Hi, my name is Gustavo. But you can call me Gus")
+Hi, my name is Gustavo.
+<BLANKLINE>
+But you can call me Gus
+
+>>> text_indentation("Salam")
+Salam
+
+>>> text_indentation()
+Traceback (most recent call last):
+	...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+>>> text_indentation(7)
+Traceback (most recent call last):
+	...
+TypeError: text must be a string
