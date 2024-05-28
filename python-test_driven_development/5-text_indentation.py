@@ -34,4 +34,4 @@ def text_indentation(text):
     stripped_lines = [line.strip() for line in result_lines]
     final_result = '\n'.join(stripped_lines)
 
-    print(final_result)
+    print(final_result, end='')
