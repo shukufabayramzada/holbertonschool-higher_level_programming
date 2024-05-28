@@ -1,7 +1,20 @@
 #!/usr/bin/python3
+"""This module reprsents how to define text indentation"""
+
+
 def text_indentation(text):
+    """
+      Text Indentation
+
+      Print: Final Result of text indentation
+
+      Possible Error:
+      TypeError: based on type of text
+
+
+    """
     if not isinstance(text, str):
-         raise TypeError("text must be a string")
+        raise TypeError("text must be a string")
 
     result = ''
     n = len(text)
