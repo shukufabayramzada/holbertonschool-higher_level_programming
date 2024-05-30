@@ -4,7 +4,9 @@ This module represents creating new class square
 inherited from rectangle
 """
 
+
 Rectangle = __import__('9-rectangle').Rectangle
+
 
 class Square(Rectangle):
 
