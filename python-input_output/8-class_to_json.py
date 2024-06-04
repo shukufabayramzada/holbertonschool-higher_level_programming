@@ -7,12 +7,8 @@ for JSON serialization of an object
 
 
 def class_to_json(obj):
-    json_obj = {}
 
-    for key, value in obj.__dict__.items():
-        json_obj[key] = value
-
-    return json_obj
+    return obj.__dict__
 
     # Without importing module it can be written as
     # in the following way by imporrting json
