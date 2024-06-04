@@ -3,6 +3,8 @@
 This module represents adds all arguments to a Python list,
 and then save them to a json reprsented file
 """
+
+
 import json
 import sys
 
