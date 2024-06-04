@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """
-This module represents retrieving a dictionary representation of a Student instance
+This module represents retrieving a
+dictionary representation of a Student instance
 """
+
 
 class Student:
 
