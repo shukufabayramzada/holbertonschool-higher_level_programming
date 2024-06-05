@@ -26,7 +26,6 @@ class Student:
                 filtered_dict[attr] = self.__dict__[attr]
 
         return filtered_dict
-    
     def reload_from_json(self, json):
         if json:
             self.first_name = json["first_name"]
