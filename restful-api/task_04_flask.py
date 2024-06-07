@@ -17,10 +17,6 @@ def get_data():
     usernames = list(users.keys())
     return jsonify(usernames)
 
-@app.route('/status')
-def get_status():
-    return "OK"
-
 @app.route('/add_user', methods=['POST'])
 def add_user():
     if request.method == 'POST':
