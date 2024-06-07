@@ -17,14 +17,6 @@ def get_data():
 def get_status():
     return "OK"
 
-@app.route('/users/<username>')
-def get_user(username):
-    user = users.get(username)
-    if user:
-        return jsonify(user)
-    else:
-        return jsonify({"error": "User not found"}), 404
-
 @app.route('/add_user', methods=['POST'])
 def add_user():
     data = request.json
