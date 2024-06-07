@@ -33,16 +33,17 @@ def add_user():
     username = data.get('username')
     if username in users:
         return jsonify({"error": "User already exists"}), 400
-    else:
-        users[username] = {
+
+    users[username] = {
             "username": username,
             "name": data.get('name'),
             "age": data.get('age'),
             "city": data.get('city')
-        }
-        return jsonify({
-            "message": "User added",
-            "user": users[username]
+            }
+
+    return jsonify({
+        "message": "User added",
+        "user": users[username]
         }), 201
 
 if __name__ == "__main__":
