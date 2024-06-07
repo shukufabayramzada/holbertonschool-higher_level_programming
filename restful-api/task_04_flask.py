@@ -14,39 +14,30 @@ def home():
 
 @app.route('/data')
 def get_data():
-    if users:
-        usernames = list(users.keys())
-        return jsonify(usernames)
-    else:
-        return jsonify([])
+    usernames = list(users.keys())
+    return jsonify(usernames)
 
 @app.route('/status')
 def get_status():
     return "OK"
 
+@app.route('/add_user', methods=['POST'])
+def add_user():
+    if request.method == 'POST':
+        user = request.get_json()
+        users[user['username']] = user
+        return jsonify({"message": "User added", "user" : user})
+
 @app.route('/users/<username>')
-def get_user(username):
-    user = users.get(username)
-    if user:
-        return jsonify(user)
+def user(username):
+    if username in users:
+        return jsonify(users[username])
     else:
         return jsonify({"error": "User not found"}), 404
 
-@app.route('/add_user', methods=['POST'])
-def add_user():
-    data = request.json
-    if not data:
-        return jsonify({"error": "Invalid data"}), 400
-    
-    username = data.get('username')
-    if not username:
-        return jsonify({"error": "Username is required"}), 400
-    
-    if username in users:
-        return jsonify({"error": "Username already exists"}), 400
-    
-    users[username] = data
-    return jsonify({"message": "User added", "user": data}), 201
+@app.route('/status')
+def status():
+    return jsonify({"status": "ok"})
 
 if __name__ == "__main__":
     app.run()
