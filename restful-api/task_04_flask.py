@@ -2,8 +2,10 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-# In-memory storage for users
-users = {}
+users = {
+    "jane": {"username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"},
+    "john": {"username": "john", "name": "John", "age": 30, "city": "New York"}
+}
 
 @app.route('/')
 def home():
@@ -11,7 +13,8 @@ def home():
 
 @app.route('/data')
 def get_data():
-    return jsonify(list(users.keys()))
+    usernames = list(users.keys())
+    return jsonify(usernames)
 
 @app.route('/status')
 def get_status():
@@ -28,22 +31,12 @@ def get_user(username):
 @app.route('/add_user', methods=['POST'])
 def add_user():
     data = request.json
-    if not data or 'username' not in data:
-        return jsonify({"error": "Username is required"}), 400
     username = data.get('username')
-    if username in users:
-        return jsonify({"error": "User already exists"}), 400
+    if username:
+        users[username] = data
+        return jsonify({"message": "User added", "user": data})
     else:
-        users[username] = {
-            "username": username,
-            "name": data.get('name'),
-            "age": data.get('age'),
-            "city": data.get('city')
-        }
-        return jsonify({
-            "message": "User added",
-            "user": users[username]
-        }), 201
+        return jsonify({"error": "Username not provided"}), 400
 
 if __name__ == "__main__":
     app.run(debug=True)
