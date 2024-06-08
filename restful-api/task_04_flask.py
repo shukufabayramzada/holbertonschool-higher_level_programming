@@ -18,8 +18,14 @@ def data():
 def add_user():
     if request.method == 'POST':
         user = request.get_json()
+        if user is None:
+            return jsonify({"error": "No data provided"}), 400
+        if "username" not in user or user["username"] == "":
+            return jsonify({"error": "Invalid username"}), 400
+        if user['username'] in all_users:
+            return jsonify({"error": "User already exists"}), 400
         all_users[user['username']] = user
-        return jsonify({"message": "User added", "user" : user})
+        return jsonify({"message": "User added", "user": user})
 
 @app.route('/users/<username>')
 def user(username):
@@ -30,7 +36,7 @@ def user(username):
 
 @app.route('/status')
 def status():
-    return jsonify({"status": "ok"})
+    return "OK"
 
 if __name__ == "__main__":
     app.run()
