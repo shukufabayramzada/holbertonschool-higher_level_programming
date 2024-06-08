@@ -19,16 +19,17 @@ def data():
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
-    if request.method == 'POST':
-        user = request.get_json()
-        if data is None or data.get('username') is None:
-            return jsonify({'error': 'Username is required'}), 400
-        if "username" not in user or user["username"] == "":
-            return jsonify({"error": "Invalid username"}), 400
-        if user['username'] in all_users:
-            return jsonify({"error": "User already exists"}), 400
-        all_users[user['username']] = user
-        return jsonify({"message": "User added", "user": user})
+    data = request.json
+    if data is None or data.get('username') is None:
+        return jsonify({'error': 'Username is required'}), 400
+    user = {
+        'username': data.get('username'),
+        'name': data.get('name'),
+        'age': data.get('age'),
+        'city': data.get('city')
+    }
+    all_users[user.get('username')] = user
+    return jsonify({'message': 'User added', 'user': user}), 201
 
 
 @app.route('/users/<username>')
