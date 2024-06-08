@@ -12,10 +12,14 @@ app.config['JWT_SECRET_KEY'] = 'someSuperSuperSecretKey'
 jwt = JWTManager(app)
 
 users = {
-        "user1": {"password": generate_password_hash("password"), "role": "user"},
-        "admin1": {"password": generate_password_hash("adminpassword"), "role": "admin"}
-        }
+    "user1": {"password": generate_password_hash("password"), "role": "user"},
+    "admin1": {"password": generate_password_hash("adminpassword"), "role": "admin"}
+}
 
+# Custom unauthorized handler for basic auth
+@auth.error_handler
+def unauthorized():
+    return jsonify({"error": "Unauthorized access"}), 401
 
 @app.route("/basic-protected")
 @auth.login_required
