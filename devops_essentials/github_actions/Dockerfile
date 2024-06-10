@@ -6,4 +6,4 @@ RUN mkdir -p /app
 
 COPY config.txt /app/config.txt
 
-CMD ["echo", "Successfully ended"]
+CMD ["echo", "Trying for actions"]
