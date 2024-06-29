@@ -20,9 +20,8 @@ if __name__ == "__main__":
             db=database_name
     )
     cur = db.cursor()
-    query = """SELECT * FROM states WHERE name = '{}'
-            ORDER BY id ASC""".format(searched_state)
-    cur.execute(query)
+    cur.execute("""SELECT * FROM states WHERE name LIKE BINARY '{}'
+                ORDER BY id ASC""".format(searched_state))
     result = cur.fetchall()
 
     for row in result:
