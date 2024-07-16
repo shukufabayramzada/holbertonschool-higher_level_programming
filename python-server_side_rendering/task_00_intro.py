@@ -4,7 +4,7 @@ def generate_invitations(template, attendees):
     if not isinstance(template, str):
         print("Error: Template is not a string.")
         return
-    
+
     if not isinstance(attendees, list) or not all(isinstance(attendee, dict) for attendee in attendees):
         print("Error: Attendees should be a list of dictionaries.")
         return
@@ -17,7 +17,8 @@ def generate_invitations(template, attendees):
         print("Error: No data provided, no output files generated.")
         return
     
-    for idx, attendee in enumerate(attendees, start= 1):
+
+    for idx, attendee in enumerate(attendees, start=1):
         invitation = template
         for key in ["name", "event_title", "event_date", "event_location"]:
             value = attendee.get(key, "N/A")
@@ -25,25 +26,22 @@ def generate_invitations(template, attendees):
                 value = "N/A"
             placeholder = f"{{{key}}}"
             invitation = invitation.replace(placeholder, value)
-    
-    output_filename = f"output_{idx}.txt"
-    
+
+        output_filename = f"output_{idx}.txt"
         
-    if os.path.exists(output_filename):
-        print(f"Error: File {output_filename} already exists. Skipping.")
+        if os.path.exists(output_filename):
+            print(f"Error: File {output_filename} already exists. Skipping.")
+            continue
         
-    
-    try:
-        with open(output_filename, 'w') as file:
-            file.write(invitation)
+        try:
+            with open(output_filename, 'w') as file:
+                file.write(invitation)
+            
+            print(f"Invitation written to {output_filename}")
+        
+        except Exception as e:
+            print(f"Error writing to file {output_filename}: {e}")
 
-        print(f"Invitation written to {output_filename}")
-
-    except Exception as e:
-        print(f"Error writing to file {output_filename}: {e}")
-
-
-           
 if __name__ == "__main__":
     with open('template.txt', 'r') as file:
         template_content = file.read()
@@ -54,4 +52,4 @@ if __name__ == "__main__":
         {"name": "Charlie", "event_title": "AI Summit", "event_date": None, "event_location": "Boston"}
     ]
 
-    generate_invitations(template_content, attendees) 
+    generate_invitations(template_content, attendees)
