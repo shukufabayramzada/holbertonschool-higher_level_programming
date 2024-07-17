@@ -3,23 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Product Display</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
 </head>
 
 <body>
-    <h1>Product List</h1>
-
+    <h1>Products</h1>
     {% if error %}
-    <p style="color: red;">{{ error }}</p>
+    <p>{{ error }}</p>
     {% else %}
-    <table border="1">
+    <table>
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Category</th>
             <th>Price</th>
         </tr>
         {% for product in products %}
         <tr>
+            <td>{{ product.id }}</td>
             <td>{{ product.name }}</td>
             <td>{{ product.category }}</td>
             <td>{{ product.price }}</td>

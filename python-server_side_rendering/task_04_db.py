@@ -48,8 +48,20 @@ def fetch_data_from_sqlite():
     conn = sqlite3.connect('products.db')
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM Products')
-    products = cursor.fetchall()
+    rows = cursor.fetchall()
     conn.close()
+
+    products = []
+    for row in rows:
+        product = {
+            'id': row[0],
+            'name': row[1],
+            'category': row[2],
+            'price': row[3]
+        }
+        products.append(product)
+
+    print(products)
     return products
 
 @app.route('/products')
